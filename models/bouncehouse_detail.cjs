@@ -1,7 +1,6 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+import { Model } from  'sequelize'
+
 module.exports = (sequelize, DataTypes) => {
   class Bouncehouse_detail extends Model {
     /**
@@ -10,7 +9,9 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Bouncehouse_detail.hasOne('Bouncehouse_pricing'), {
+        foreignKey: "detail_id"
+      }
     }
   }
   Bouncehouse_detail.init({
