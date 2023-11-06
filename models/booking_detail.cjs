@@ -1,5 +1,5 @@
 "use strict";
-import { Model } from "sequelize";
+import { Model } from 'sequelize';
 
 module.exports = (sequelize, DataTypes) => {
   class Booking_detail extends Model {
@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: "Booking_detail",
+      modelName: 'Booking_detail',
     }
   );
   return Booking_detail;

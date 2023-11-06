@@ -1,5 +1,5 @@
 'use strict';
-import { Model } from  'sequelize'
+import { Model } from 'sequelize'
 
 module.exports = (sequelize, DataTypes) => {
   class Bouncehouse_detail extends Model {
@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Bouncehouse_detail.hasOne('Bouncehouse_pricing'), {
-        foreignKey: "detail_id"
+        foreignKey: 'detail_id'
       }
     }
   }

@@ -1,1 +1,1 @@
-import { sequelize } from ("./models")
+import { sequelize } from ('./models')

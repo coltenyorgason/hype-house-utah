@@ -1,10 +1,10 @@
-import express from "express";
+import express from 'express';
 
 const app = express();
 const port = 5173;
 
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static("public"));
+app.use(express.static('public'));
 app.use(express.json());
 
 app.get('/', () => {})

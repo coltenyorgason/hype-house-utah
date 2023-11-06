@@ -1,5 +1,5 @@
 "use strict";
-import { Model } from "sequelize";
+import { Model } from 'sequelize';
 
 module.exports = (sequelize, DataTypes) => {
   class Bouncehouse_pricing extends Model {
@@ -9,8 +9,8 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Bouncehouse_pricing.hasMany("Booking_detail", {
-        foreignKey: "pricing_id",
+      Bouncehouse_pricing.hasMany('Booking_detail', {
+        foreignKey: 'pricing_id',
       });
     }
   }
@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: "Bouncehouse_pricing",
+      modelName: 'Bouncehouse_pricing',
     }
   );
   return Bouncehouse_pricing;
