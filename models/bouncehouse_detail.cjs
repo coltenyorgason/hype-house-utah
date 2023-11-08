@@ -1,5 +1,5 @@
 'use strict';
-import { Model } from 'sequelize'
+import { Model } from 'sequelize';
 
 module.exports = (sequelize, DataTypes) => {
   class Bouncehouse_detail extends Model {
