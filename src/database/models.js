@@ -2,37 +2,39 @@
 import { Model, DataTypes } from "sequelize";
 import myConnectionToDB  from "../database/db.js";
 import util from "util";
+import Sequelize from "sequelize";
 
+export const dbConnection = await myConnectionToDB("bouncehouseDB");
 
-export const dbConnection = myConnectionToDB("postgresql:///bouncehouseDB");
+// export const dbConnection = new Sequelize('postgresql://localhost:5173/bouncehouseDB')
 
-export class Booking_details extends Model {
+export class bookingDetails extends Model {
   [util.inspect.custom]() {
     return this.toJSON();
   }
 }
-Booking_details.init(
+bookingDetails.init(
   {
     id: { type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true, 
     },
-    scheduledDate: { type: DataTypes.DATETIME },
+    scheduledDate: { type: DataTypes.DATE },
     order_price: { type: DataTypes.FLOAT },
     pricing_id: { type: DataTypes.INTEGER },
   },
   {
     sequelize: dbConnection,
-    modelName: "booking_details",
+    modelName: "bookingDetails",
   }
 );
 
-export class Bouncehouse_details extends Model {
+export class bouncehouseDetails extends Model {
   [util.inspect.custom]() {
     return this.toJSON();
   }
 }
-Bouncehouse_details.init(
+bouncehouseDetails.init(
   {
     id: { type: DataTypes.INTEGER,
     primaryKey: true,
@@ -44,16 +46,16 @@ Bouncehouse_details.init(
   
   {
     sequelize: dbConnection,
-    modelName: "bouncehouse_details",
+    modelName: "bouncehouseDetails",
   }
 );
 
-export class Bouncehouse_pricings extends Model {
+export class bouncehousePricings extends Model {
   [util.inspect.custom]() {
     return this.toJSON();
   }
 }
-Bouncehouse_pricings.init(
+bouncehousePricings.init(
   {
     id: { type: DataTypes.INTEGER,
     primaryKey: true,
@@ -64,6 +66,13 @@ Bouncehouse_pricings.init(
   },
   {
     sequelize: dbConnection,
-    modelName: "bouncehouse_pricings",
+    modelName: "bouncehousePricings",
   }
 );
+
+bouncehouseDetails.belongsTo(bouncehousePricings, {
+  through: detail_id
+})
+bookingDetails.hasMany(bouncehousePricings, {
+foreignKey: pricing_id
+})
