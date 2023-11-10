@@ -1,4 +1,6 @@
 import express from 'express';
+import { controllerFunctions } from './controller';
+
 
 const app = express();
 const port = 5173;
@@ -8,6 +10,10 @@ app.use(express.static('public'));
 app.use(express.json());
 
 app.get('/', () => {})
+
+app.get('/allBookings', controllerFunctions.getBookings)
+app.get('/allBounceHouses', controllerFunctions.getBounceHouses)
+app.get('/allCustomers', controllerFunctions.getCustomers)
 
 app.listen(port, () =>
   console.log(`Running on server http://localhost:${port}/`)

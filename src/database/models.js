@@ -21,7 +21,10 @@ bookingDetails.init(
     },
     scheduledDate: { type: DataTypes.DATE },
     order_price: { type: DataTypes.FLOAT },
-    pricing_id: { type: DataTypes.INTEGER },
+    bouncehouse_id: { type: DataTypes.INTEGER, allowNull: false},
+    customer_id: { type: DataTypes.INTEGER, allowNull: false },
+
+    
   },
   {
     sequelize: dbConnection,
@@ -29,50 +32,49 @@ bookingDetails.init(
   }
 );
 
-export class bouncehouseDetails extends Model {
+export class customerDetails extends Model {
   [util.inspect.custom]() {
     return this.toJSON();
   }
 }
-bouncehouseDetails.init(
+customerDetails.init(
   {
     id: { type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
     },
-    description: { type: DataTypes.STRING }, 
-    product_img: { type: DataTypes.STRING },
+    name: { type: DataTypes.STRING},
+    phone: { type: DataTypes.STRING },
+    email: { type: DataTypes.STRING }
+  
   },
   
   {
     sequelize: dbConnection,
-    modelName: "bouncehouseDetails",
+    modelName: "customerDetails",
   }
 );
 
-export class bouncehousePricings extends Model {
+export class bouncehouse extends Model {
   [util.inspect.custom]() {
     return this.toJSON();
   }
 }
-bouncehousePricings.init(
+bouncehouse.init(
   {
     id: { type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true },
     price_3hr: { type: DataTypes.FLOAT },
     price_6hr: {type: DataTypes.FLOAT },
-    detail_id: { type: DataTypes.INTEGER },
+    description: { type: DataTypes.STRING }, 
+    product_img: { type: DataTypes.STRING },
   },
   {
     sequelize: dbConnection,
-    modelName: "bouncehousePricings",
+    modelName: "bouncehouse",
   }
 );
 
-bouncehouseDetails.belongsTo(bouncehousePricings, {
-  through: detail_id
-})
-bookingDetails.hasMany(bouncehousePricings, {
-foreignKey: pricing_id
-})
+bookingDetails.hasMany(customerDetails)
+bookingDetails.hasMany(bouncehouse)
