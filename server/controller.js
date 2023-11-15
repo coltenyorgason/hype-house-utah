@@ -1,16 +1,25 @@
-import { bookingDetails, bouncehouse, customerDetails } from "../src/database/models";
+import {
+  bookingDetails,
+  bouncehouse,
+  customerDetails,
+} from "../src/database/models.js";
 
-export const controllerFunctions = {
+ const controllerFunctions = {
   getCustomers: async (req, res) => {
     const customers = await customerDetails.findAll();
     res.json(customers);
   },
   getBounceHouses: async (req, res) => {
     const bouncehouses = await bouncehouse.findAll();
-    res.json(bouncehouses)
+    res.json(bouncehouses);
   },
   getBookings: async (req, res) => {
     const bookings = await bookingDetails.findAll();
-    res.json(bookings)
-  }
+    res.json(bookings);
+  },
 };
+
+// FULL CRUD 
+
+
+export default controllerFunctions;

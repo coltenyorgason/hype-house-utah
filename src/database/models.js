@@ -1,6 +1,6 @@
 "use strict";
 import { Model, DataTypes } from "sequelize";
-import myConnectionToDB  from "../database/db.js";
+import myConnectionToDB from "../database/db.js";
 import util from "util";
 import Sequelize from "sequelize";
 
@@ -15,16 +15,11 @@ export class bookingDetails extends Model {
 }
 bookingDetails.init(
   {
-    id: { type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true, 
-    },
+    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     scheduledDate: { type: DataTypes.DATE },
     order_price: { type: DataTypes.FLOAT },
-    bouncehouse_id: { type: DataTypes.INTEGER, allowNull: false},
+    bouncehouse_id: { type: DataTypes.INTEGER, allowNull: false },
     customer_id: { type: DataTypes.INTEGER, allowNull: false },
-
-    
   },
   {
     sequelize: dbConnection,
@@ -39,16 +34,12 @@ export class customerDetails extends Model {
 }
 customerDetails.init(
   {
-    id: { type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true,
-    },
-    name: { type: DataTypes.STRING},
+    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+    name: { type: DataTypes.STRING },
     phone: { type: DataTypes.STRING },
-    email: { type: DataTypes.STRING }
-  
+    email: { type: DataTypes.STRING },
   },
-  
+
   {
     sequelize: dbConnection,
     modelName: "customerDetails",
@@ -62,12 +53,10 @@ export class bouncehouse extends Model {
 }
 bouncehouse.init(
   {
-    id: { type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true },
+    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     price_3hr: { type: DataTypes.FLOAT },
-    price_6hr: {type: DataTypes.FLOAT },
-    description: { type: DataTypes.STRING }, 
+    price_6hr: { type: DataTypes.FLOAT },
+    description: { type: DataTypes.STRING },
     product_img: { type: DataTypes.STRING },
   },
   {
@@ -76,5 +65,5 @@ bouncehouse.init(
   }
 );
 
-bookingDetails.hasMany(customerDetails)
-bookingDetails.hasMany(bouncehouse)
+bookingDetails.hasMany(customerDetails);
+bookingDetails.hasMany(bouncehouse);
