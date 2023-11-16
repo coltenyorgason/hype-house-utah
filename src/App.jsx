@@ -5,6 +5,7 @@ import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LandingPage from "./routes/landingpage";
 import ProductPage from "./routes/productpage";
+import NavBar from "./components/NavBar";
 
 function App() {
   const router = createBrowserRouter([
@@ -19,7 +20,7 @@ function App() {
   ]);
   return (
     <>
-      <div>navbar</div>
+      <NavBar />
       <RouterProvider router={router} />
     </>
   );
