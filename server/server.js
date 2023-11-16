@@ -1,12 +1,19 @@
 import express from "express";
 import controllerFunctions  from "./controller.js";
+import cors from 'cors'
 
 const app = express();
 const port = 5172;
+const corsOptions = {
+  origin: "*"
+}
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static("public"));
 app.use(express.json());
+app.use(cors(corsOptions))
+
+
 
 app.get("/", () => {});
 

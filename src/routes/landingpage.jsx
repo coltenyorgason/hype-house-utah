@@ -1,19 +1,18 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-export default function LandingPage({ initialBounceHouseData }) {
+export default function LandingPage() {
   const [bounceHouseDataState, setBounceHouseData] = useState(
-    initialBounceHouseData
+    []
   );
   useEffect(() => {
     axios
       .get("http://localhost:5172/allBounceHouses")
       .then((response) => {
-        console.log(response)
         setBounceHouseData(response.data);
       })
       .catch((error) => console.error("error fetching data:", error));
-  }, []);
+  },[]);
   console.log(bounceHouseDataState)
   return (
     <div>
@@ -24,6 +23,7 @@ export default function LandingPage({ initialBounceHouseData }) {
           </li>
         ))}
       </ul>
+      landingpage
     </div>
   );
 }
