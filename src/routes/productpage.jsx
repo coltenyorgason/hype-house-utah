@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import ProductCard from "../components/ProductCard";
 
 export default function ProductPage() {
-  const [bounceHouseDataState, setBounceHouseData] = useState(
-    []
-  );
+  const [bounceHouseDataState, setBounceHouseData] = useState([]);
   useEffect(() => {
     axios
       .get("http://localhost:5172/allBounceHouses")
@@ -12,17 +11,16 @@ export default function ProductPage() {
         setBounceHouseData(response.data);
       })
       .catch((error) => console.error("error fetching data:", error));
-  },[]);
-  console.log(bounceHouseDataState)
+  }, []);
+  console.log(bounceHouseDataState);
   return (
     <div>
-      <ul>
-        {bounceHouseDataState.map((bounceHouse) => (
-          <li key={bounceHouse.id}>
-            <p>{bounceHouse.description}</p>
-          </li>
-        ))}
-      </ul>
+      {bounceHouseDataState.map((bounceHouse) => (
+        <ProductCard
+          description={bounceHouse.description}
+          img="https://m.media-amazon.com/images/I/8154feawNDL.jpg"
+        />
+      ))}
     </div>
   );
 }
