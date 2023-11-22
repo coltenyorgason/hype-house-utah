@@ -19,6 +19,7 @@ export default function ProductPage() {
         <ProductCard
           description={bounceHouse.description}
           img="https://m.media-amazon.com/images/I/8154feawNDL.jpg"
+          id={bounceHouse.id}
         />
       ))}
     </div>

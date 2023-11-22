@@ -10,7 +10,7 @@ function ProductCard (props) {
         <Card.Text>
           {props.description}
         </Card.Text>
-        <Button variant="primary">Book Now</Button>
+        <a href={`/bookingpage/${props.id}`} className="btn btn-primary"> Book Now </a>
       </Card.Body>
     </Card>
   );

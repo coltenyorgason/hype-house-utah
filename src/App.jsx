@@ -6,6 +6,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LandingPage from "./routes/landingpage";
 import ProductPage from "./routes/productpage";
 import NavBar from "./components/NavBar";
+import BookingPage from "./routes/bookingpage";
+
 
 function App() {
   const router = createBrowserRouter([
@@ -17,6 +19,10 @@ function App() {
       path: "/products",
       element: <ProductPage />,
     },
+    {
+      path: "/bookingpage/:id", 
+      element: <BookingPage/>
+    }
   ]);
   return (
     <>
