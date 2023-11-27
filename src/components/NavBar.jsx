@@ -12,7 +12,13 @@ export default function NavBar() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="/products">The Main Castle</Nav.Link>
-            <Nav.Link href="https://www.instagram.com/hypehouseutah/">Follow Us On Instagram</Nav.Link>
+            <Nav.Link
+              href="https://www.instagram.com/hypehouseutah/"
+              target="_blank"
+            >
+              Follow Us On Instagram
+            </Nav.Link>
+            <Nav.Link href="/contactus">Contact Us</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
