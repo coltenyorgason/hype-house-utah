@@ -8,6 +8,7 @@ import ProductPage from "./routes/productpage";
 import NavBar from "./components/NavBar";
 import BookingPage from "./routes/bookingpage";
 import ContactUs from "./routes/contactuspage";
+import AdminPage from "./routes/adminpage";
 
 function App() {
   const router = createBrowserRouter([
@@ -27,6 +28,10 @@ function App() {
       path: "/contactus",
       element: <ContactUs />,
     },
+    {
+      path: "/admin",
+      element: <AdminPage />
+    }
   ]);
   return (
     <>

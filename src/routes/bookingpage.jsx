@@ -24,6 +24,7 @@ export default function BookingPage() {
       })
       .catch((error) => console.error("error fetching data:", error));
   }, []);
+  console.log('bouncehouse id', id)
   function HandleSubmit(e) {
     axios.post(`http://localhost:5172/booking/create`, {
       name: name,
@@ -33,7 +34,7 @@ export default function BookingPage() {
       pickupTime: pickUp,
       dropOffTime: dropOff,
       orderPrice: "threeHour",
-      bounceHouse_id: id
+      bounceHouseId: id
     });
   }
   return (

@@ -15,6 +15,7 @@ const controllerFunctions = {
   },
   getBookings: async (req, res) => {
     const bookings = await bookingDetails.findAll();
+    console.log(bookings)
     res.json(bookings);
   },
   getBounceHouseByID: async (req, res) => {
@@ -23,10 +24,17 @@ const controllerFunctions = {
     res.json(bounceHouse);
   },
   createBooking: async (req, res) => {
-    const { name, email, phone, date, pickupTime, dropOffTime, orderPrice, bounceHouseId } =
-      req.body;
+    const {
+      name,
+      email,
+      phone,
+      date,
+      pickupTime,
+      dropOffTime,
+      orderPrice,
+      bounceHouseId,
+    } = req.body;
     let customer = await customerDetails.findOne({ where: { email: email } });
-    console.log("customer log", customer);
     if (customer === null) {
       customer = await customerDetails.create({
         name: name,
@@ -34,14 +42,22 @@ const controllerFunctions = {
         phone: phone,
       });
     }
-    console.log("second customer log", customer);
+    console.log(bounceHouseId)
     const newBooking = await bookingDetails.create({
       scheduledDate: date,
       order_price: orderPrice,
       bouncehouse_id: bounceHouseId,
-      customer_id: customer.id
+      customer_id: customer.id,
     });
     res.json(newBooking);
+  },
+
+  deleteBooking: async (req, res) => {
+    const { bookingId } = req.params;
+    await bookingDetails.destroy({
+      where: { id: bookingId },
+    });
+    res.json({ success: true, deletedBooking: bookingId });
   },
 };
 

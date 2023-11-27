@@ -20,6 +20,7 @@ app.get("/allBounceHouses", controllerFunctions.getBounceHouses);
 app.get("/allCustomers", controllerFunctions.getCustomers);
 app.get("/bounceHouse/:bounceHouseId", controllerFunctions.getBounceHouseByID);
 app.post("/booking/create", controllerFunctions.createBooking);
+app.delete("/booking/:bookingId", controllerFunctions.deleteBooking)
 
 app.listen(port, () =>
   console.log(`Running on server http://localhost:${port}/`)
