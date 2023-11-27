@@ -18,8 +18,8 @@ bookingDetails.init(
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     scheduledDate: { type: DataTypes.DATE },
     order_price: { type: DataTypes.FLOAT },
-    bouncehouse_id: { type: DataTypes.INTEGER, allowNull: false },
-    customer_id: { type: DataTypes.INTEGER, allowNull: false },
+    bouncehouse_id: { type: DataTypes.INTEGER},
+    customer_id: { type: DataTypes.INTEGER },
   },
   {
     sequelize: dbConnection,
@@ -65,5 +65,5 @@ bouncehouse.init(
   }
 );
 
-bookingDetails.hasMany(customerDetails);
-bookingDetails.hasMany(bouncehouse);
+bookingDetails.hasOne(customerDetails, {foreignKey: 'customer_id'});
+bookingDetails.hasOne(bouncehouse, {foreignKey: 'bouncehouse_id'});

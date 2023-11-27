@@ -12,10 +12,16 @@ const controllerFunctions = {
   getBounceHouses: async (req, res) => {
     const bouncehouses = await bouncehouse.findAll();
     res.json(bouncehouses);
+    console.log(bouncehouses)
   },
   getBookings: async (req, res) => {
-    const bookings = await bookingDetails.findAll();
-    console.log(bookings)
+    const bookings = await bookingDetails.findAll({
+      include: [
+        { model: bouncehouse, attributes: ["price_3hr", "price_6hr"] },
+        { model: customerDetails, attributes: ["name"] },
+      ],
+    });
+    console.log(bookings);
     res.json(bookings);
   },
   getBounceHouseByID: async (req, res) => {
@@ -42,7 +48,6 @@ const controllerFunctions = {
         phone: phone,
       });
     }
-    console.log(bounceHouseId)
     const newBooking = await bookingDetails.create({
       scheduledDate: date,
       order_price: orderPrice,

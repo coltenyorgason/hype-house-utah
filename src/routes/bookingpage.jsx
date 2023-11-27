@@ -33,7 +33,7 @@ export default function BookingPage() {
       date: date,
       pickupTime: pickUp,
       dropOffTime: dropOff,
-      orderPrice: "threeHour",
+      orderPrice: 25,
       bounceHouseId: id
     });
   }
