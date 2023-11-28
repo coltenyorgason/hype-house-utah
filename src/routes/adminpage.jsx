@@ -19,10 +19,6 @@ export default function AdminPage() {
       {bookings.map((eachBooking) => (
         <BookingCard
             booking={eachBooking}
-        //   rate={eachBooking.order_price}
-        //   time={eachBooking.scheduledDate}
-        //   bouncehouse={eachBooking.bouncehouse_id}
-        //   customer={eachBooking.customer_id}
         />
       ))}
     </div>

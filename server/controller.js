@@ -64,6 +64,15 @@ const controllerFunctions = {
     });
     res.json({ success: true, deletedBooking: bookingId });
   },
+  updateBooking: async (req, res) => {
+    const { bookingId } = req.params
+    const { orderPrice } = req.body
+    const booking = await bookingDetails.findByPk(bookingId)
+    booking.order_price = orderPrice
+    await booking.save()
+    console.log(booking)
+    res.json({success: true})
+  }
 };
 
 export default controllerFunctions;

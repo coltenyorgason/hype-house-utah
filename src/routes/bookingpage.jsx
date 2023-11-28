@@ -5,6 +5,7 @@ import "react-calendar/dist/Calendar.css";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import axios from "axios";
+import { Dropdown, DropdownButton } from "react-bootstrap";
 
 export default function BookingPage() {
   const { id } = useParams();
@@ -15,6 +16,7 @@ export default function BookingPage() {
   const [pickUp, setPickUp] = useState("");
   const [dropOff, setDropOff] = useState("");
   const [bounceHouseData, setBounceHouseData] = useState("");
+  const [price, setPrice] = useState("Pick Your Rate");
 
   useEffect(() => {
     axios
@@ -24,7 +26,7 @@ export default function BookingPage() {
       })
       .catch((error) => console.error("error fetching data:", error));
   }, []);
-  console.log('bouncehouse id', id)
+  console.log("bouncehouse id", id);
   function HandleSubmit(e) {
     axios.post(`http://localhost:5172/booking/create`, {
       name: name,
@@ -33,26 +35,21 @@ export default function BookingPage() {
       date: date,
       pickupTime: pickUp,
       dropOffTime: dropOff,
-      orderPrice: 25,
-      bounceHouseId: id
+      orderPrice: price,
+      bounceHouseId: id,
     });
   }
   return (
     <Form onSubmit={HandleSubmit}>
       <div className="mb-3">
-        <Form.Label>Time Length and Price</Form.Label>
-        <Form.Check
-          type="radio"
-          label={`$${bounceHouseData.price_3hr} For 3 Hours`}
-          id="3 Hour"
-          name="threeHour"
-        />
-        <Form.Check
-          type="radio"
-          label={`$${bounceHouseData.price_6hr} For 6 Hours`}
-          id="6 Hour"
-          name="sixHour"
-        />
+        <DropdownButton title={price} onSelect={(e) => setPrice(parseInt(e))}>
+          <Dropdown.Item eventKey={bounceHouseData.price_3hr}>
+            ${bounceHouseData.price_3hr} For 3 Hours
+          </Dropdown.Item>
+          <Dropdown.Item eventKey={bounceHouseData.price_6hr}>
+            ${bounceHouseData.price_6hr} For 6 Hours
+          </Dropdown.Item>
+        </DropdownButton>
       </div>
       <Calendar onChange={setDate} value={date} />
       <Form.Group className="mb-3" controlId="formBasicPassword">
