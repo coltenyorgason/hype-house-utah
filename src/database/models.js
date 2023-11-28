@@ -66,4 +66,6 @@ bouncehouse.init(
 );
 
 bookingDetails.hasOne(customerDetails, {foreignKey: 'customer_id'});
+customerDetails.belongsTo(bookingDetails)
 bookingDetails.hasOne(bouncehouse, {foreignKey: 'bouncehouse_id'});
+bouncehouse.belongsTo(bookingDetails) 

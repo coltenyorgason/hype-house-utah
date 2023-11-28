@@ -18,7 +18,7 @@ const controllerFunctions = {
     const bookings = await bookingDetails.findAll({
       include: [
         { model: bouncehouse, attributes: ["price_3hr", "price_6hr"] },
-        { model: customerDetails, attributes: ["name"] },
+        { model: customerDetails,  attributes: ["name"] },
       ],
     });
     console.log(bookings);
