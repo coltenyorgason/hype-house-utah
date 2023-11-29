@@ -9,6 +9,7 @@ npm i to install the dependencies
 npm run dev to start the server
 npm run seed to seed the DB
 npm initdb to create and initialize the database
+npm run test for the front end
 
 
 ## Credits
