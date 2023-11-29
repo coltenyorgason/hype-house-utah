@@ -5,7 +5,7 @@ function ProductCard (props) {
   return (
     <Card style={{ width: '18rem' }} className='mx-auto'>
       <Card.Img variant="top" src={props.img}/>
-      <Card.Body>
+      <Card.Body className='d-flex justify-content-center align-items-center flex-column'>
         <Card.Title>Description</Card.Title>
         <Card.Text>
           {props.description}

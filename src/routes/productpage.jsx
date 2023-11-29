@@ -14,7 +14,7 @@ export default function ProductPage() {
   }, []);
   console.log(bounceHouseDataState);
   return (
-    <div>
+    <div className="d-flex justify-content-center align-items-center vh-100">
       {bounceHouseDataState.map((bounceHouse) => (
         <ProductCard
           description={bounceHouse.description}
