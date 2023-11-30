@@ -5,8 +5,10 @@ import axios from "axios";
 import Dropdown from "react-bootstrap/Dropdown";
 import { useState, useEffect } from "react";
 
+
 export default function BookingCard({ booking }) {
   const [orderPrice, setOrderPrice] = useState(booking.order_price);
+  const [customer, setCustomer] = useState({})
   const [bounceHouse, setBounceHouse] = useState({
     description: "",
     id: 0,
@@ -19,6 +21,12 @@ export default function BookingCard({ booking }) {
       .get(`http://localhost:5172/bounceHouse/${booking.bouncehouse_id}`)
       .then((response) => {
         setBounceHouse(response.data);
+      })
+      .catch((error) => console.error("error fetching data:", error));
+      axios
+      .get(`http://localhost:5172/customer/${booking.customer_id}`)
+      .then((response) => {
+        setCustomer(response.data);
       })
       .catch((error) => console.error("error fetching data:", error));
   }, []);
@@ -37,7 +45,7 @@ export default function BookingCard({ booking }) {
       key={booking.customer_id}
     >
       <Card.Body>
-        <Card.Title>{booking.customer_id}</Card.Title>
+        <Card.Title>{customer.name}</Card.Title>
         <Card.Text>
           <DropdownButton
             title={orderPrice}
@@ -51,7 +59,7 @@ export default function BookingCard({ booking }) {
             </Dropdown.Item>
           </DropdownButton>
           <p>{booking.scheduledDate}</p>
-          <p>{booking.bouncehouse_id}</p>
+          <p>{bounceHouse.description}</p>
         </Card.Text>
         <Button onClick={handleUpdate}>Update</Button>
         <Button onClick={handleDelete}>Delete</Button>

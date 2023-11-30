@@ -19,9 +19,10 @@ app.get("/allBookings", controllerFunctions.getBookings);
 app.get("/allBounceHouses", controllerFunctions.getBounceHouses);
 app.get("/allCustomers", controllerFunctions.getCustomers);
 app.get("/bounceHouse/:bounceHouseId", controllerFunctions.getBounceHouseByID);
+app.get("/customer/:customerId", controllerFunctions.getCustomerById);
 app.post("/booking/create", controllerFunctions.createBooking);
-app.delete("/booking/:bookingId", controllerFunctions.deleteBooking)
-app.put("/updateBooking/:bookingId", controllerFunctions.updateBooking)
+app.delete("/booking/:bookingId", controllerFunctions.deleteBooking);
+app.put("/updateBooking/:bookingId", controllerFunctions.updateBooking);
 
 app.listen(port, () =>
   console.log(`Running on server http://localhost:${port}/`)

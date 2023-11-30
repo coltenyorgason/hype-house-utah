@@ -72,6 +72,11 @@ const controllerFunctions = {
     await booking.save()
     console.log(booking)
     res.json({success: true})
+  },
+  getCustomerById: async (req, res) => {
+    const { customerId} = req.params
+    const customer = await customerDetails.findByPk(customerId)
+    res.json(customer)
   }
 };
 

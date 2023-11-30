@@ -18,7 +18,7 @@ export default function ProductPage() {
       {bounceHouseDataState.map((bounceHouse) => (
         <ProductCard
           description={bounceHouse.description}
-          img="https://m.media-amazon.com/images/I/8154feawNDL.jpg"
+          img={bounceHouse.product_img}
           id={bounceHouse.id}
         />
       ))}

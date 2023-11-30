@@ -40,55 +40,59 @@ export default function BookingPage() {
     });
   }
   return (
-    <Form onSubmit={HandleSubmit}>
-      <div className="mb-3">
-        <DropdownButton title={price} onSelect={(e) => setPrice(parseInt(e))}>
-          <Dropdown.Item eventKey={bounceHouseData.price_3hr}>
-            ${bounceHouseData.price_3hr} For 3 Hours
-          </Dropdown.Item>
-          <Dropdown.Item eventKey={bounceHouseData.price_6hr}>
-            ${bounceHouseData.price_6hr} For 6 Hours
-          </Dropdown.Item>
-        </DropdownButton>
-      </div>
-      <Calendar onChange={setDate} value={date} />
-      <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Name</Form.Label>
-        <Form.Control
-          onChange={(e) => {
-            setName(e.target.value);
-          }}
-          value={name}
-          type="textarea"
-          name="customerName"
-        />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
-        <Form.Control
-          onChange={(e) => {
-            setEmail(e.target.value);
-          }}
-          value={email}
-          type="email"
-          name="customerEmail"
-        />
-      </Form.Group>
+    <div >
+      <Form onSubmit={HandleSubmit} className="d-flex flex-column" style={{ maxWidth: "75vw", margin: "auto", paddingTop: "1rem" }}>
+        <div className="mb-3">
+          <DropdownButton title={price} onSelect={(e) => setPrice(parseInt(e))}>
+            <Dropdown.Item eventKey={bounceHouseData.price_3hr}>
+              ${bounceHouseData.price_3hr} For 3 Hours
+            </Dropdown.Item>
+            <Dropdown.Item eventKey={bounceHouseData.price_6hr}>
+              ${bounceHouseData.price_6hr} For 6 Hours
+            </Dropdown.Item>
+          </DropdownButton>
+        </div>
+        <div className="mx-auto">
+          <Calendar onChange={setDate} value={date} />
+        </div>
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label>Name</Form.Label>
+          <Form.Control
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
+            value={name}
+            type="textarea"
+            name="customerName"
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Email address</Form.Label>
+          <Form.Control
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+            value={email}
+            type="email"
+            name="customerEmail"
+          />
+        </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formBasicCheckbox">
-        <Form.Label>Phone</Form.Label>
-        <Form.Control
-          onChange={(e) => {
-            setPhone(e.target.value);
-          }}
-          value={phone}
-          type="tel"
-          name="customerPhone"
-        />
-      </Form.Group>
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
-    </Form>
+        <Form.Group className="mb-3" controlId="formBasicCheckbox">
+          <Form.Label>Phone</Form.Label>
+          <Form.Control
+            onChange={(e) => {
+              setPhone(e.target.value);
+            }}
+            value={phone}
+            type="tel"
+            name="customerPhone"
+          />
+        </Form.Group>
+        <Button variant="primary" type="submit" className="w-25">
+          Submit
+        </Button>
+      </Form>
+    </div>
   );
 }

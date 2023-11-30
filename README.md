@@ -6,9 +6,9 @@
 ## Installation
 
 npm i to install the dependencies 
-npm run dev to start the server
+npm run initdb to create and initialize the database
 npm run seed to seed the DB
-npm initdb to create and initialize the database
+npm run dev to start the server
 npm run test for the front end
 
 
@@ -26,7 +26,3 @@ the product page contains a card with a button where the user can click to be re
 I created a specific endpoint /admin to be able to destroy(delete) and update bookings. 
 
 this project contains full CRUD and I am excited to add to it as I get better at developing web applications. 
-
-
-
-
